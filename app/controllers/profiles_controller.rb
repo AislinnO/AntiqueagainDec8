@@ -15,17 +15,12 @@ class ProfilesController < ApplicationController
  # GET /myprofile/pastorders
   # GET myprofile/pastorders.json
  def pastorders
-	@profile = Profile.find_by_user_id(current_user.id)
-	@pastorders = Orders.find_by_user_id(current_user.id)
+	@profile = current_user.profile # Profile.find_by_user_id(current_user.id)
+	@pastorders = current_user.orders # Order.find_all_by_user_id(current_user.id)
 	
 	respond_to do |format|
-	if orders.all = nil
-		format.html {redirect_to 'myprofile/pastorders', notice: 'No previous orders'}
-		 format.json { head :no_content }
-	else
-		format.html {redirect_to 'myprofile/pastorders', notice: "Your past orders"}
-		format.json {render json: @orders.past, notice: 'Here are your orders'}
-	end
+		format.html 
+		format.json { head :no_content }
   end
 end
 
